@@ -31,8 +31,9 @@ const styles = StyleSheet.create({
         borderRadius: IMAGE_SIZE / 2,
     },
     sortByContainer: {
-        flex: 1,
         flexDirection: 'row',
+        borderBottomWidth: 2, 
+        borderBottomColor: COLORS.LIGHT_GREY,
         backgroundColor: COLORS.WHITE,
         justifyContent: 'center',
         paddingVertical: PADDING.SIXTEEN,

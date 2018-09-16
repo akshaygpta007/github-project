@@ -74,11 +74,7 @@ class Main extends Component {
         const { users = {} } = this.props;
         const count = users.items && users.items.length;
         const countString = `Showing ${count} results`;
-        return (
-            <View>
-                {this.renderSortByFilter()}
-                <Text style={styles.usersCount}>{countString}</Text>
-            </View>);
+        return <Text style={styles.usersCount}>{countString}</Text>;
     }
 
     rendersUserList = (users, fetchAllUsers) => {
@@ -96,6 +92,7 @@ class Main extends Component {
                         placeholder: 'Search',
                     }}
                 />
+                {this.renderSortByFilter()}
                 <FlatList
                     data={sortedUsers}
                     ListHeaderComponent={this.renderListDetails}

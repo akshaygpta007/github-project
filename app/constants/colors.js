@@ -1,4 +1,5 @@
 export default COLORS = {
+    BLACK: "#000000",
     GREY: "rgb(127, 117, 117)",
     LINK: "blue",
     WHITE: "#FFFFFF",

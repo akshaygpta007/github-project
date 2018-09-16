@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { ActivityIndicator, Image, FlatList, Picker, Text, View } from 'react-native';
+import { ActivityIndicator, Image, FlatList, Picker, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchAllGithubUsers } from '../../apis';
 import { sortData, SORT_BY, getDefaultSorting } from './helper';
 import styles from './styles';
+import { SCREENS } from '../../constants/app';
 
 class Main extends Component {
     constructor(props) {
@@ -32,9 +33,12 @@ class Main extends Component {
                         <Text>{scoreText}</Text>
                     </View>
                 </View>
-                <View style={styles.viewDetailLinkContainer}>
+                <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate(SCREENS.DETAILS, { userDetails: item })}
+                    style={styles.viewDetailLinkContainer}
+                >
                     <Text style={styles.viewDetailLink}>View Details</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         );
     }

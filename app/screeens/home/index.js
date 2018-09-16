@@ -11,6 +11,7 @@ import { fetchAllGithubUsers } from '../../apis';
 import { sortData, SORT_BY, getDefaultSorting, SORT_BY_OPTIONS } from './helper';
 import styles from './styles';
 import { SCREENS } from '../../constants/app';
+import COLORS from '../../constants/colors';
 
 const SORT_BY_OPTION_MSG = "Sort By";
 
@@ -91,6 +92,7 @@ class Main extends Component {
                         },
                         placeholder: 'Search',
                     }}
+                    style={{ container: { backgroundColor: COLORS.BLUE } }}
                 />
                 {this.renderSortByFilter()}
                 <FlatList

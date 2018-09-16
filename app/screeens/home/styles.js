@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import COLORS from '../../constants/colors';
-import { PADDING, MARGIN } from '../../constants/dimen';
+import { PADDING, MARGIN, FONT } from '../../constants/dimen';
 
 const IMAGE_SIZE = 50;
 
@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         padding: PADDING.SIXTEEN,
     },
     flexContainer: {
-        backgroundColor: COLORS.WHITE,
         flex: 1,
     },
     flexRowContainer: {
@@ -36,9 +35,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: COLORS.WHITE,
         justifyContent: 'center',
+        paddingVertical: PADDING.SIXTEEN,
     },
     sortBy: {
-        width: 160,
+        fontSize: FONT.SIZE.SIXTEEN,
+        marginRight: MARGIN.EIGHT
     },
     viewDetailLinkContainer: {
         justifyContent: 'center',

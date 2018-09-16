@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
-import { ActivityIndicator, Image, FlatList, Picker, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Image, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import { Toolbar } from 'react-native-material-ui';
+import ActionSheet from 'react-native-actionsheet'
 
 import { fetchAllGithubUsers } from '../../apis';
-import { sortData, SORT_BY, getDefaultSorting } from './helper';
+import { sortData, SORT_BY, getDefaultSorting, SORT_BY_OPTIONS } from './helper';
 import styles from './styles';
 import { SCREENS } from '../../constants/app';
+
+const SORT_BY_OPTION_MSG = "Sort By";
 
 class Main extends Component {
     constructor(props) {
@@ -46,25 +50,25 @@ class Main extends Component {
         );
     }
 
-    renderSortByFilter = () => {
-        const { sortBy } = this.state;
-        return (
-            <View style={styles.sortByContainer}>
-                <Picker
-                    selectedValue={sortBy}
-                    style={styles.sortBy}
-                    onValueChange={(itemValue, itemIndex) => {
-                        this.setState({ sortBy: itemValue });
-                    }}>
-                    <Picker.Item label={SORT_BY.title.text} value={SORT_BY.title.value} />
-                    <Picker.Item label={SORT_BY.nameAscending.text} value={SORT_BY.nameAscending.value} />
-                    <Picker.Item label={SORT_BY.nameDescending.text} value={SORT_BY.nameDescending.value} />
-                    <Picker.Item label={SORT_BY.renkAscending.text} value={SORT_BY.renkAscending.value} />
-                    <Picker.Item label={SORT_BY.rankDescending.text} value={SORT_BY.rankDescending.value} />
-                </Picker>
-            </View>
-        );
-    }
+    renderSortByFilter = () => (
+        <TouchableOpacity
+            onPress={() => this.ActionSheet.show()}
+            style={styles.sortByContainer}
+        >
+            <Text style={styles.sortBy} >
+                {SORT_BY.title.text}
+            </Text>
+            <Icon name="sort" />
+            <ActionSheet
+                ref={o => this.ActionSheet = o}
+                title={SORT_BY_OPTION_MSG}
+                options={SORT_BY_OPTIONS}
+                cancelButtonIndex={SORT_BY.cancel.value}
+                destructiveButtonIndex={this.state.sortBy}
+                onPress={(index) => index !== SORT_BY.cancel.value && this.setState({ sortBy: index })}
+            />
+        </TouchableOpacity>
+    )
 
     renderListDetails = () => {
         const { users = {} } = this.props;
@@ -80,8 +84,7 @@ class Main extends Component {
     rendersUserList = (users, fetchAllUsers) => {
         const sortedUsers = sortData(users, this.state.sortBy);
         return(
-            <SafeAreaView
-                style={styles.flexContainer}>
+            <SafeAreaView style={styles.flexContainer}>
                 <Toolbar
                     leftElement="menu"
                     centerElement="HOME"

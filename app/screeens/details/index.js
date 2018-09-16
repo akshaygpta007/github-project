@@ -31,7 +31,7 @@ class Details extends Component {
     renderCell = (iconName, title, description, onPress) => (
         <View style={[styles.flexRowContainer, styles.smallCell]}>
             <Icon
-                containerStyle={[styles.smallImage]}
+                containerStyle={styles.smallImage}
                 name={iconName}
             />
 

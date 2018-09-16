@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import COLORS from '../../constants/colors';
-import { PADDING, MARGIN } from '../../constants/dimen';
+import { PADDING, MARGIN, FONT } from '../../constants/dimen';
 import colors from '../../constants/colors';
 
 const IMAGE_SIZE = 80;
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     basicInfoText: {
-        fontSize: 18,
+        fontSize: FONT.SIZE.EIGHTEEN,
         fontWeight: 'bold',
     },
     viewProfileContainer: {
@@ -54,15 +54,15 @@ const styles = StyleSheet.create({
         borderRadius: IMAGE_SIZE / 4,
     },
     title: {
-        fontSize: 10,
+        fontSize: FONT.SIZE.TEN,
     },
     descriptionWithLink: {
-        fontSize: 16,
+        fontSize: FONT.SIZE.SIXTEEN,
         fontWeight: 'bold',
         color: COLORS.LINK,
     },
     description: {
-        fontSize: 16,
+        fontSize: FONT.SIZE.SIXTEEN,
         fontWeight: 'bold',
     },
   });

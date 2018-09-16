@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { ActivityIndicator, Image, FlatList, Picker, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
+
+import { SafeAreaView } from 'react-navigation';
+import { Toolbar } from 'react-native-material-ui';
+
 import { fetchAllGithubUsers } from '../../apis';
 import { sortData, SORT_BY, getDefaultSorting } from './helper';
 import styles from './styles';
@@ -10,7 +14,6 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchString: '',
             sortBy: getDefaultSorting(),
         }
     }
@@ -65,7 +68,7 @@ class Main extends Component {
 
     renderListDetails = () => {
         const { users = {} } = this.props;
-        const count = users ? users.total_count : 0;
+        const count = users.items && users.items.length;
         const countString = `Showing ${count} results`;
         return (
             <View>
@@ -74,29 +77,37 @@ class Main extends Component {
             </View>);
     }
 
-    rendersUserList = (users) => {
+    rendersUserList = (users, fetchAllUsers) => {
         const sortedUsers = sortData(users, this.state.sortBy);
         return(
-            <FlatList
-                data={sortedUsers}
-                ListHeaderComponent={this.renderListDetails}
-                keyExtractor={({ login }) => login}
-                extraData={this.state}
-                renderItem={this.renderUser}
-            />
+            <SafeAreaView
+                style={styles.flexContainer}>
+                <Toolbar
+                    leftElement="menu"
+                    centerElement="HOME"
+                    searchable={{
+                        autoFocus: true,
+                        onChangeText: (text) => {
+                            text && fetchAllUsers(text);
+                        },
+                        placeholder: 'Search',
+                    }}
+                />
+                <FlatList
+                    data={sortedUsers}
+                    ListHeaderComponent={this.renderListDetails}
+                    keyExtractor={({ login }) => login}
+                    extraData={this.state}
+                    renderItem={this.renderUser}
+                />
+            </SafeAreaView>
         );
     }
 
     render() {
-        const { users } = this.props;
-        return users ? this.rendersUserList(users.items) : <ActivityIndicator />
+        const { fetchAllUsers, users } = this.props;
+        return users ? this.rendersUserList(users.items, fetchAllUsers) : <ActivityIndicator />
     }
-
-    static navigationOptions = ({ navigation }) => {
-        return {
-            headerTitle: 'HOME',
-        };
-    };
 };
 
 function mapStateToProps(state) {

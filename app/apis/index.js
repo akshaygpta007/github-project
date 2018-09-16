@@ -6,7 +6,7 @@ const appendQueryParameter = (API, parameter) => API+"?q="+parameter;
 
 export const fetchAllGithubUsers = (dispatch, searchString = DEFAULT_SEARCH_KEY) => {
     const apiUrl = appendQueryParameter(GITHUB_USER_SEARCH_API, searchString);
-    fetch(appendQueryParameter(GITHUB_USER_SEARCH_API, searchString))
+    fetch(apiUrl)
     .then((response) => {
         saveUsersDataToStore(JSON.parse(response._bodyInit), dispatch);
     })

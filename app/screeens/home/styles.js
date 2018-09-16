@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         padding: PADDING.SIXTEEN,
     },
     flexContainer: {
+        backgroundColor: COLORS.WHITE,
         flex: 1,
     },
     flexRowContainer: {

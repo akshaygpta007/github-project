@@ -2,37 +2,15 @@ import React, {Component} from 'react';
 import { ActivityIndicator, Image, FlatList, Picker, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchAllGithubUsers } from '../../apis';
+import { sortData, SORT_BY, getDefaultSorting } from './helper';
 import styles from './styles';
-
-const SORT_BY = {
-    title: {
-        text: "Sort By",
-        value: 0,
-    },
-    nameAscending: {
-        text: "Name (A - Z)",
-        value: 1,
-    },
-    nameDescending: {
-        text: "Name (Z - A)",
-        value: 2,
-    },
-    renkAscending: {
-        text: "Rank Asc",
-        value: 3,
-    },
-    rankDescending: {
-        text: "Rank Desc",
-        value: 4,
-    }
-};
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             searchString: '',
-            sortBy: SORT_BY.nameDescending.value,
+            sortBy: getDefaultSorting(),
         }
     }
 
@@ -93,9 +71,10 @@ class Main extends Component {
     }
 
     rendersUserList = (users) => {
+        const sortedUsers = sortData(users, this.state.sortBy);
         return(
             <FlatList
-                data={users}
+                data={sortedUsers}
                 ListHeaderComponent={this.renderListDetails}
                 keyExtractor={({ login }) => login}
                 extraData={this.state}

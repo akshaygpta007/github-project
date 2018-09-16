@@ -32,8 +32,10 @@ const styles = StyleSheet.create({
     },
     sortByContainer: {
         flexDirection: 'row',
-        borderBottomWidth: 2, 
+        borderBottomWidth: 2,
+        borderTopWidth: 2,
         borderBottomColor: COLORS.LIGHT_GREY,
+        borderTopColor: COLORS.LIGHT_GREY,
         backgroundColor: COLORS.WHITE,
         justifyContent: 'center',
         paddingVertical: PADDING.SIXTEEN,

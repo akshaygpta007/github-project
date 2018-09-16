@@ -8,6 +8,8 @@ import { Icon } from 'react-native-elements';
 import styles from './styles';
 import { getRepositoryDetails } from '../../apis';
 import { getRepositoryData, CELL } from './helper';
+import { SCREENS } from '../../constants/app';
+import COLORS from '../../constants/colors';
 
 class Details extends Component {
 
@@ -82,6 +84,17 @@ class Details extends Component {
     }
     static navigationOptions = ({ navigation }) => {
         return {
+            headerLeft: (
+                <Icon
+                    color={COLORS.WHITE}
+                    iconStyle={styles.headerLeft}
+                    name="chevron-left"
+                    onPress={() => navigation.navigate(SCREENS.MAIN)}
+                    underlayColor={COLORS.BLUE}
+                />
+            ),
+            headerStyle: styles.headerStyle,
+            headerTitleStyle: styles.headerTitleStyle,
             headerTitle: 'User Details',
         };
     };

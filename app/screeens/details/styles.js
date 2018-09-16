@@ -65,6 +65,16 @@ const styles = StyleSheet.create({
         fontSize: FONT.SIZE.SIXTEEN,
         fontWeight: 'bold',
     },
+    headerLeft: {
+        padding: PADDING.EIGHT
+    },
+    headerStyle: {
+        backgroundColor: COLORS.BLUE
+    },
+    headerTitleStyle: {
+        color: COLORS.WHITE,
+        flex: 1,
+    },
   });
 
   export default styles;

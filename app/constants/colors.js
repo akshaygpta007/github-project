@@ -4,4 +4,5 @@ export default COLORS = {
     LINK: "blue",
     WHITE: "#FFFFFF",
     LIGHT_GREY: "#F3F3F3",
+    BLUE: '#4C6EB5',
 }

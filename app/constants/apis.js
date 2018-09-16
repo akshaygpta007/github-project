@@ -1,4 +1,4 @@
-export const DEFAULT_SEARCH_KEY = "akshaygupta";
+export const DEFAULT_SEARCH_KEY = "va";
 
 const GITHUB_API = "https://api.github.com";
 const GITHUB_SEARCH_API = GITHUB_API + "/search";

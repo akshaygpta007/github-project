@@ -27,7 +27,7 @@ class Main extends Component {
     }
     
     renderUser = ({ item }) => {
-        const scoreText = `Score: ${item.score}`;
+        const scoreText = `Score: ${parseInt(item.score, 10)}`;
         return (
             <View style={[styles.flexRowContainer, styles.cell]}>
                 <View style={styles.flexRowContainer}>

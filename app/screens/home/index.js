@@ -75,10 +75,13 @@ class Main extends Component {
 
     renderListDetails = (users) => {
         const count = users.length;
-        const countString = `Showing ${count} results`;
         return (
             <View>
-                <Text style={styles.usersCount}>{countString}</Text>
+                <View style={[styles.flexRowContainer, styles.usersCountContainer]}>
+                    <Text>Showing </Text>
+                    <Text style={styles.usersCountText}>{users.length}</Text>
+                    <Text> results</Text>
+                </View>
                 {!count && <ActivityIndicator />}
             </View>);
     }

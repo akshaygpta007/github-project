@@ -5,15 +5,18 @@ import { PADDING, MARGIN, FONT } from '../../constants/dimen';
 const IMAGE_SIZE = 50;
 
 const styles = StyleSheet.create({
-    usersCount: {
-        padding: PADDING.SIXTEEN,
-    },
     flexContainer: {
         flex: 1,
     },
     flexRowContainer: {
         flex: 1,
         flexDirection: 'row',  
+    },
+    usersCountContainer: {
+        padding: PADDING.SIXTEEN,
+    },
+    usersCountText: {
+        fontFamily: 'Lato-Bold',
     },
     cell: {
         backgroundColor: COLORS.WHITE,

@@ -5,7 +5,7 @@ const Text = (props) => (
     <RNText
         {...props}
         style={[
-            {fontFamily: "Lato-Black"},
+            { fontFamily: "Lato-Regular" },
             props.style,
         ]}
     >

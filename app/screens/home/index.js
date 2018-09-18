@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { ActivityIndicator, Image, FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Image, FlatList, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import Text from '../../components/text';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import { Toolbar } from 'react-native-material-ui';

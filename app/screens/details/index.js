@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { Image, Linking, Text, ScrollView, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, ScrollView, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import Text from '../../components/text';
 import { Icon } from 'react-native-elements';
 
 import styles from './styles';

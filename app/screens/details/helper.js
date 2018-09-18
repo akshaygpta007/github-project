@@ -1,9 +1,9 @@
 export const getRepositoryData = (repository, id, index = 0) => {
-    let name = 'GitHub';
-    let description = 'GitHub Repository';
-    let repo_url = 'http://www.google.com';
-    let language = 'javascript';
-    let createdOn = '10-09-2018';
+    let name = '';
+    let description = '';
+    let repo_url = '';
+    let language = '';
+    let createdOn = '';
     if (repository && repository[id] && repository[id][index]) {
         if (repository[id][index].name) {
             name = repository[id][index].name;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Image, Linking, ScrollView, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Image, Linking, ScrollView, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import Text from '../../components/text';
@@ -58,8 +58,8 @@ class Details extends Component {
         const { name, description, repo_url, language, createdOn } = getRepositoryData(repository, id);
         const onPressRepositoryUrl = () => repo_url && this.openUrl(repo_url);
         const onPressViewProfile = () => html_url && this.openUrl(html_url);
-        const createdOnDate = new Date(createdOn).toLocaleDateString().split('/').join('-');
-        return (
+        const createdOnDate = createdOn && new Date(createdOn).toLocaleDateString().split('/').join('-');
+        return !name ? <ActivityIndicator /> : (
             <ScrollView style={styles.flexContainer}>
                 <View style={[styles.flexRowContainer, styles.cell]}>
                     <Image 

@@ -58,6 +58,7 @@ class Details extends Component {
         const { name, description, repo_url, language, createdOn } = getRepositoryData(repository, id);
         const onPressRepositoryUrl = () => repo_url && this.openUrl(repo_url);
         const onPressViewProfile = () => html_url && this.openUrl(html_url);
+        const createdOnDate = new Date(createdOn).toLocaleDateString().split('/').join('-');
         return (
             <ScrollView style={styles.flexContainer}>
                 <View style={[styles.flexRowContainer, styles.cell]}>
@@ -79,7 +80,7 @@ class Details extends Component {
                 {this.renderCell(CELL.DESCRIPTION.ICON, CELL.DESCRIPTION.TITLE, description)}
                 {this.renderCell(CELL.URL.ICON, CELL.URL.TITLE, repo_url, onPressRepositoryUrl)}
                 {this.renderCell(CELL.LANGUAGE.ICON, CELL.LANGUAGE.TITLE, language)}
-                {this.renderCell(CELL.CREATED_ON.ICON, CELL.CREATED_ON.TITLE, createdOn)}
+                {this.renderCell(CELL.CREATED_ON.ICON, CELL.CREATED_ON.TITLE, createdOnDate)}
             </ScrollView>
         );
     }

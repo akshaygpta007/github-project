@@ -3,8 +3,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 
-import Main from './app/screeens/home';
-import Details from './app/screeens/details';
+import Main from './app/screens/home';
+import Details from './app/screens/details';
 import rootReducer from './app/reducers';
 import { SCREENS } from './app/constants/app';
 

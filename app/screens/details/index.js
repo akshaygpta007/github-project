@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import { ActivityIndicator, Image, Linking, ScrollView, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, ScrollView, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import Text from '../../components/text';
+
 import { Icon } from 'react-native-elements';
 
 import styles from './styles';
@@ -59,7 +60,7 @@ class Details extends Component {
         const onPressRepositoryUrl = () => repo_url && this.openUrl(repo_url);
         const onPressViewProfile = () => html_url && this.openUrl(html_url);
         const createdOnDate = createdOn && new Date(createdOn).toLocaleDateString().split('/').join('-');
-        return !name ? <ActivityIndicator /> : (
+        return (
             <ScrollView style={styles.flexContainer}>
                 <View style={[styles.flexRowContainer, styles.cell]}>
                     <Image 

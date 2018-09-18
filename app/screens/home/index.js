@@ -3,6 +3,7 @@ import { ActivityIndicator, Image, FlatList, TouchableOpacity, View } from 'reac
 import { connect } from 'react-redux';
 
 import Text from '../../components/text';
+
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import { Toolbar } from 'react-native-material-ui';
@@ -72,11 +73,14 @@ class Main extends Component {
         </TouchableOpacity>
     )
 
-    renderListDetails = () => {
-        const { users = {} } = this.props;
-        const count = users.items && users.items.length;
+    renderListDetails = (users) => {
+        const count = users.length;
         const countString = `Showing ${count} results`;
-        return <Text style={styles.usersCount}>{countString}</Text>;
+        return (
+            <View>
+                <Text style={styles.usersCount}>{countString}</Text>
+                {!count && <ActivityIndicator />}
+            </View>);
     }
 
     rendersUserList = (users, fetchAllUsers) => {
@@ -98,7 +102,7 @@ class Main extends Component {
                 {this.renderSortByFilter()}
                 <FlatList
                     data={sortedUsers}
-                    ListHeaderComponent={this.renderListDetails}
+                    ListHeaderComponent={this.renderListDetails(users)}
                     keyExtractor={({ login }) => login}
                     extraData={this.state}
                     renderItem={this.renderUser}
@@ -108,8 +112,9 @@ class Main extends Component {
     }
 
     render() {
-        const { fetchAllUsers, users } = this.props;
-        return users ? this.rendersUserList(users.items, fetchAllUsers) : <ActivityIndicator />
+        const { fetchAllUsers, users = {} } = this.props;
+        const { items = [] } = users;
+        return this.rendersUserList(items, fetchAllUsers);
     }
 };
 

@@ -1,8 +1,8 @@
 export const getRepositoryData = (repository, id, index = 0) => {
-    let name = '';
-    let description = '';
-    let repo_url = '';
-    let language = '';
+    let name = '- - -';
+    let description = '- - -';
+    let repo_url = '- - -';
+    let language = '- - -';
     let createdOn = '';
     if (repository && repository[id] && repository[id][index]) {
         if (repository[id][index].name) {

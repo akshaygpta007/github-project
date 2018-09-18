@@ -25,7 +25,12 @@ export const fetchAllGithubUsers = (dispatch, searchString = DEFAULT_SEARCH_KEY)
 export const getRepositoryDetails = (dispatch, id, repos_url) => {
     fetch(repos_url)
     .then((response) => {
-        saveRepositoryDetailsDataToStore(id, JSON.parse(response._bodyInit), dispatch);
+        const data = JSON.parse(response._bodyInit);
+        if (data.message) {
+            Alert.alert("API error", data.message);
+        } else {
+            saveRepositoryDetailsDataToStore(id, JSON.parse(response._bodyInit), dispatch);
+        }
     })
     // Saving this to console for now, just to make sure 
     // API is working.
